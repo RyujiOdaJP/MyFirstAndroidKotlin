@@ -6,51 +6,35 @@ import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 
 // まずはonCreateというメソッドがAndroidによって呼び出されます
 // =>エントリーポイントという。
 // class hoge : fuga() でextendsの意味
-class MainActivity : AppCompatActivity() {
-    @SuppressLint("SetTextI18n")
-    override fun onCreate(savedInstanceState: Bundle?) {
-//        val hello: String = "Hello World"
-        val intValue: Int = 12345 //型宣言しなくても可
-        val longValue: Long = 12345L //Long型のリテラル
-        val doubleValue: Double = 12.345
-        val floatValue: Float = 12.345F
-        val booleanValue: Boolean = true
+class MainActivity : AppCompatActivity(), View.OnClickListener {
 
+    @SuppressLint("SetTextI18n")
+
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        Log.d("MainActivity", "it works!")
 
-        //R.id.text_view_helloはレイアウトエディタで自動で振り分けられる定数(Int)
-        val hello: TextView = findViewById(R.id.text_view_hello)
-        hello.text = "Hello, Android"
-        hello.setTextColor(Color.parseColor("#FF0000"))
-        hello.typeface = Typeface.DEFAULT_BOLD
-        Log.d("MainActivity", hello.text.toString())
+        val button: Button = findViewById(R.id.button)
+        button.setOnClickListener(this)
 
-//        Log.d("MainActivity", hello);
-        Log.d("MainActivity", "" + intValue);
-        Log.d("MainActivity", "" + longValue);
-        Log.d("MainActivity", "" + doubleValue);
-        Log.d("MainActivity", "" + floatValue);
-        Log.d("MainActivity", "" + booleanValue);
-        Log.d("MainActivity", "" + this.addition(5, 19));
-//        Log.d("MainActivity", "" + hello.replace("World", "Android"));
-
-        /* log output
-        2020-12-26 23:27:03.392 13106-13106/com.example.myfirstandroidkotlin D/MainActivity: Hello World
-        2020-12-26 23:27:03.392 13106-13106/com.example.myfirstandroidkotlin D/MainActivity: 12345
-        2020-12-26 23:27:03.392 13106-13106/com.example.myfirstandroidkotlin D/MainActivity: 12345
-        2020-12-26 23:27:03.392 13106-13106/com.example.myfirstandroidkotlin D/MainActivity: 12.345
-        2020-12-26 23:27:03.393 13106-13106/com.example.myfirstandroidkotlin D/MainActivity: 12.345
-        2020-12-26 23:27:03.393 13106-13106/com.example.myfirstandroidkotlin D/MainActivity: true
-        */
     }
+    override fun onClick(v: View) {
+        Log.d("MainActivity", "Clicked!")
 
-    private fun addition(a: Int, b: Int): Int {
-        return a + b
+        val editText: EditText = findViewById(R.id.editText)
+        val input = editText.text.toString()
+        Log.d("string", input)
+
+        val textView: TextView = findViewById(R.id.textView)
+        textView.text = input
     }
 }
