@@ -1,5 +1,8 @@
 package com.example.myfirstandroidkotlin
 
+import android.annotation.SuppressLint
+import android.graphics.Color
+import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -9,6 +12,7 @@ import android.widget.TextView
 // =>エントリーポイントという。
 // class hoge : fuga() でextendsの意味
 class MainActivity : AppCompatActivity() {
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
 //        val hello: String = "Hello World"
         val intValue: Int = 12345 //型宣言しなくても可
@@ -22,6 +26,9 @@ class MainActivity : AppCompatActivity() {
 
         //R.id.text_view_helloはレイアウトエディタで自動で振り分けられる定数(Int)
         val hello: TextView = findViewById(R.id.text_view_hello)
+        hello.text = "Hello, Android"
+        hello.setTextColor(Color.parseColor("#FF0000"))
+        hello.typeface = Typeface.DEFAULT_BOLD
         Log.d("MainActivity", hello.text.toString())
 
 //        Log.d("MainActivity", hello);
