@@ -24,6 +24,8 @@ class MainActivity : AppCompatActivity() {
         Log.d("MainActivity", "" + double_value);
         Log.d("MainActivity", "" + float_value);
         Log.d("MainActivity", "" + boolean_value);
+        Log.d("MainActivity", "" + this.addition(5, 19));
+        Log.d("MainActivity", "" + hello.replace("World", "Android"));
 
         /* log output
         2020-12-26 23:27:03.392 13106-13106/com.example.myfirstandroidkotlin D/MainActivity: Hello World
@@ -33,5 +35,8 @@ class MainActivity : AppCompatActivity() {
         2020-12-26 23:27:03.393 13106-13106/com.example.myfirstandroidkotlin D/MainActivity: 12.345
         2020-12-26 23:27:03.393 13106-13106/com.example.myfirstandroidkotlin D/MainActivity: true
         */
+    }
+    private fun addition (a: Int, b: Int) : Int {
+        return a + b
     }
 }
